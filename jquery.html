@@ -1,0 +1,509 @@
+<html>
+
+  <head>
+
+    <title>JS Bin</title>
+
+    <script src="jquery.js" type="text/javascript"></script>
+
+    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
+
+    <link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
+
+
+    <style type="text/css">
+
+      @media only screen and (max-width: 760px) 
+      {
+        .file {display: none;}
+        .add-library {display: none;}
+        .login {display: none;}
+        .blog {display: none;}
+        .help {display: none;}
+        .file-options {display: none;}
+        .help-options {display: none;}
+      }
+
+      body
+      {
+        padding: 0px;
+        margin: 0px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+      }
+
+
+      #topbar-container
+      {
+        width:100%;
+        background-color: #EDEDED;
+        height:35px;
+        border-bottom:1px #BFBFBF solid;
+        font-size:13px;
+      }
+
+      #logo
+      {
+        width:31px;
+        position:relative;
+        top:2px;
+        left:2px;
+        float:left;
+      }
+
+      #topbar-container a
+      {
+        text-decoration: none;
+      }
+
+      .file
+      {
+        position:relative;
+        left:1px;
+        padding:10px 15px 8px 7px;
+        float:left;
+        color:#232323;
+        border-left:1px #EDEDED solid;
+        border-right:1px #EDEDED solid;
+        cursor:pointer;
+      }
+
+      .down-arrow
+      {
+        font-size:7px;
+        position:relative;
+        bottom:2px;
+        left:4px;
+      }
+
+      .file:hover
+      {
+        background-color:#d8d8d8;
+        border-left:1px #BFBFBF solid;
+        border-right:1px #BFBFBF solid;
+      }
+
+      .file-click
+      {
+        background-color: white;
+        padding: 10px 15px 9px 7px;
+        border-left: 1px solid #CCCCCC;
+        border-right: 1px solid #CCCCCC;
+      }
+
+      .file-click:hover
+      {
+        background-color: white;
+      }
+
+      #file-toggle
+      {
+        position:absolute;
+        z-index:1;
+        display:none;
+        width:269px;
+        background-color: white;
+        border:1px solid #CCCCCC;
+        border-top:none;
+      }
+
+      .file-options
+      {
+        padding:9px 0 1px 9px;
+        font-size:13px;
+        border-bottom:none;
+        height:25px;
+      }
+
+      .file-options:hover
+      {
+        background-color: #F5F5F5;
+        cursor:pointer;
+      }
+
+      .file-options-border
+      {
+        border-bottom:1px solid #CCCCCC;
+      }
+
+      .add-library
+      {
+        position:relative;
+        left:1px;
+        padding:10px 12px 8px 9px;
+        float:left;
+        color:#232323;
+        border-left:1px #EDEDED solid;
+        border-right:1px #EDEDED solid;
+        cursor:pointer;
+      }
+
+      .add-library:hover
+      {
+        background-color:#d8d8d8;
+        border-left:1px #BFBFBF solid;
+        border-right:1px #BFBFBF solid;
+      }
+
+      .login
+      {
+        color:black;
+        background-color: #FFEB3B;
+        padding:5px 7px 5px 7px;
+        margin:0 auto;
+        position:relative;
+        bottom:27px;
+        right:100px;
+        float:right;
+      }
+
+      .blog
+      {
+        margin:0 auto;
+        position:relative;
+        bottom:31px;
+        left:62px;
+        padding:10px 10px 8px 9px;
+        float:right;
+        color:#232323;
+        border-left:1px #EDEDED solid;
+        border-right:1px #EDEDED solid;
+      }
+
+      .blog:hover
+      {
+        background-color:#d8d8d8;
+        border-left:1px #BFBFBF solid;
+        border-right:1px #BFBFBF solid;
+      }
+
+      .help
+      {
+        margin:0 auto;
+        position:relative;
+        bottom:31px;
+        left:156px;
+        padding:10px 10px 8px 10px;
+        float:right;
+        color:#232323;
+        border-left:1px #EDEDED solid;
+        border-right:1px #EDEDED solid;
+      }
+
+      .help:hover
+      {
+        background-color:#d8d8d8;
+        border-left:1px #BFBFBF solid;
+        border-right:1px #BFBFBF solid;
+        cursor:pointer;
+      }
+
+      .help-click
+      {
+        background-color: white;
+        padding: 10px 10px 9px 9px;
+        border-left: 1px solid #CCCCCC;
+        border-right: 1px solid #CCCCCC;
+      }
+
+      .help-click:hover
+      {
+        background-color: white;
+      }
+
+      #help-toggle
+      {
+        z-index:1;
+        position:absolute;
+        left:1095px;
+        float:right;
+        display:none;
+        width:269px;
+        background-color: white;
+        border:1px solid #CCCCCC;
+        border-top:none;
+      }
+
+      .help-options
+      {
+        padding:9px 0 1px 9px;
+        font-size:13px;
+        border-bottom:none;
+        height:25px;
+      }
+
+      .help-options:hover
+      {
+        background-color: #F5F5F5;
+        cursor:pointer;
+      }
+
+      .help-options-border
+      {
+        border-bottom:1px solid #CCCCCC;
+      }
+
+      #button-container
+      {
+        position: relative;
+        top:2px;
+        left:8px;
+        margin: 0 auto;
+        background-color:#EDEDED;
+        height:29px;
+        width:304px;
+        border:1px #CCCCCC solid;
+        border-radius:5px;  
+      }
+      
+      .top-buttons
+      {
+        float:left;
+        padding:7px 10px 0px 10px;
+        text-decoration: none;
+        color:#232323;
+        border-right:1px solid #CCCCCC;
+        height:80%;
+        cursor:pointer;
+      }
+
+      .top-buttons:hover
+      {
+        background-color: #d8d8d8;
+      }
+      
+      .top-buttons-click
+      {
+        background-color: #EBF3FF;
+        height:75%;
+        border-radius: 5px;
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 0px;
+      }
+
+      .top-buttons-click:hover
+      {
+        background-color: #F5F9FF;
+      }
+
+      .output
+      {
+        float:left;
+        padding:7px 10px 0px 10px;
+        text-decoration: none;
+        color:#232323;
+        height:75%;
+        cursor:pointer;
+        border:none;
+      }
+
+      .output:hover
+      {
+        background-color: #d8d8d8;
+      }
+
+      .output-button-click
+      {
+        background-color: #EBF3FF;
+        height:75%;
+        border-radius: 5px;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+      }
+      
+      .output-button-click:hover
+      {
+        background-color: #F5F9FF;
+      }
+
+      
+
+      #body-container
+      {
+        position:absolute;
+        margin:0 auto;
+        display:flex;
+        width:100%;
+      }
+
+      .panel
+      {
+        flex-grow:1;
+        resize:horizontal;
+        overflow: auto;
+        width:50%;
+        min-width: 200px;
+        float:left;
+        display:none;
+      }
+
+      .panel-title
+      {
+        background-color: #232323;
+        width:100%;
+        height:50px;
+      }
+      
+      #output-panel
+      {
+        flex-grow:3;
+        min-width: 200px;
+        width:50%;
+        border:1px black solid;  
+      }
+      
+
+
+    </style>
+
+  </head>
+
+  <body>
+    
+    <div id="topbar-container">
+
+      <a href=""><img id="logo" src="images/logo.jpg"></a>
+
+      <div class="file">File <span class="down-arrow">⯆</span></div>
+
+      <div class="add-library">Add library</div>
+
+      <div id="button-container">
+        
+        <div class="top-buttons" id="html">HTML</div>
+        <div class="top-buttons" id="css">CSS</div>
+        <div class="top-buttons" id="javascript">JavaScript</div>
+        <div class="top-buttons" id="console">Console</div>
+        <div class="output">Output</div>
+
+      </div>
+
+      <a href="" class="login">Login or Register</a>
+
+      <a href="" class="blog">Blog</a>
+
+      <div class="help">Help</div>
+
+    </div>
+
+    <div id="file-toggle">
+
+      <div class="file-options">New</div>
+      <div class="file-options">Make bin private</div>
+      <div class="file-options">Delete</div>
+      <div class="file-options file-options-border">Archive</div>
+      <div class="file-options">Add description</div>
+      <div class="file-options">Save snapshot</div>
+      <div class="file-options file-options-border">Clone</div>
+      <div class="file-options">Publish to vanity homepage</div>
+      <div class="file-options">Export as gist</div>
+      <div class="file-options">Download</div>
+      <div class="file-options">Save as template</div>
+
+    </div>
+
+    <div id="help-toggle">
+
+      <div class="help-options">Keyboard shrotcuts</div>
+      <div class="help-options help-options-border">JS Bin URLs</div>
+      <div class="help-options">Search help...</div>
+      <div class="help-options help-options-border">All help topics</div>
+      <div class="help-options">Send feedback & file bugs</div>
+      <div class="help-options">Donate on Gratipay</div>
+      <div class="help-options">Follow @js_bin</div>
+      <div class="help-options">Support JS Bin: upgrade now</div>
+
+    </div>
+
+
+    <div id="body-container">
+
+      <div class=></div>
+
+      <textarea class="html-panel panel"></textarea>
+
+      <textarea class="css-panel panel"></textarea>
+
+      <textarea class="javascript-panel panel"></textarea>
+
+  
+      <iframe id="output-panel" class="panel"></iframe>
+
+     
+
+    </div>
+
+
+
+    <script type="text/javascript">
+    
+      function updateOutput()
+      {
+        $("iframe").contents().find("html").html("<html><head><style = 'text/css'>" + $(".css-panel").val() + "</style></head><body>" + $(".html-panel").val() + "</body></html");
+        document.getElementById("output-panel").contentWindow.eval($(".javascript-panel").val());
+      }
+
+      $(".file").click(function()
+      {
+        $("#file-toggle").toggle();
+        $(this).toggleClass("file-click");
+      });
+
+      $(".help").click(function()
+      {
+        $("#help-toggle").toggle();
+        $(this).toggleClass("help-click");
+      });
+
+      $(".top-buttons").click(function()
+      {
+        $(this).toggleClass("top-buttons-click");
+      });
+
+      $(".output").click(function()
+      {
+        $(this).toggleClass("output-button-click");
+      });
+
+      
+      $(".panel").height($(window).height() - 40);
+
+      $("iframe").contents().find("html").html($(".html-panel").val());
+
+      updateOutput();
+      $("textarea").on("change keyup paste", function()
+      {
+        updateOutput();
+      });
+
+
+      $("#html").click(function()
+      {
+        $(".html-panel").toggle();
+      }
+      );
+
+      $("#css").click(function()
+      {
+        $(".css-panel").toggle();
+      }
+      );
+
+      $("#javascript").click(function()
+      {
+        $(".javascript-panel").toggle();
+      }
+      ); 
+
+      $(".output").click(function()
+      {
+        $("#output-panel").toggle();
+      }
+      ); 
+
+    
+    </script>
+
+
+  </body>
+
+</html>
