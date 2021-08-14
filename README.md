@@ -4,8 +4,8 @@ A JS Bin clone project using **HTML, CSS, JavaScript, Jquery**.
 
 ### Test your HTML, CSS and Javascript!
 https://sushantpatial.github.io/JS-Bin-Clone
-<br><br>
 
+### Screenshots
 ![image](https://user-images.githubusercontent.com/84243683/125358762-f629f600-e386-11eb-8e30-b33479662960.png)
 
 
