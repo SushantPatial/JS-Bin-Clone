@@ -1,8 +1,11 @@
 # JS Bin Clone
 
-A JS Bin clone project using **HTML, CSS, JavaScript, Jquery**.
+<b>A JS Bin clone.</b>
 
-### Test your HTML, CSS and Javascript!
+### Languages used
+HTML, CSS, JavaScript
+
+### Test your HTML, CSS and JavaScript!
 https://sushantpatial.github.io/JS-Bin-Clone
 
 ### Screenshots
