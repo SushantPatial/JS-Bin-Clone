@@ -3,7 +3,7 @@
 <b>A JS Bin clone.</b>
 
 ### Languages used
-HTML, CSS, JavaScript
+HTML, CSS, jQuery
 
 ### Test your HTML, CSS and JavaScript!
 https://sushantpatial.github.io/JS-Bin-Clone
